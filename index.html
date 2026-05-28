@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Escola Nova Grand Prix | CNH em Todo o Brasil</title>
+    <meta name="description" content="Auto Escola Nova Grand Prix - Desde 1977 formando condutores. Fornecemos CNH em todo o Brasil com qualidade e aprovação garantida.">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; background: #f0f4f8; color: #1a2a3a; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        
+        :root {
+            --primary: #1a3a5c;
+            --primary-dark: #0f2a44;
+            --secondary: #d4a843;
+            --secondary-dark: #b8922e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --dark: #2c3e50;
+        }
+        
+        .top-bar { background: var(--primary-dark); color: var(--white); padding: 8px 0; font-size: 13px; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .top-bar .endereco i { color: var(--secondary); margin-right: 5px; }
+        
+        .header { background: var(--white); position: sticky; top: 0; z-index: 1000; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-icon { width: 60px; height: 60px; background: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; color: var(--secondary); }
+        .logo-text h1 { font-size: 22px; color: var(--primary); margin: 0; }
+        
+        .atendimento-buttons { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+        .btn-atendimento { padding: 8px 18px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
+        .btn-whatsapp { background: #25D366; color: var(--white); }
+        .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); }
+        .btn-phone { background: var(--primary); color: var(--white); }
+        .btn-phone:hover { background: var(--primary-dark); transform: scale(1.02); }
+        
+        .hero { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--white); text-align: center; padding: 80px 20px; }
+        .hero h2 { font-size: 44px; margin-bottom: 18px; }
+        .hero p { font-size: 18px; max-width: 700px; margin: 0 auto 28px; }
+        
+        .hero .destaque-nacional { 
+            background: var(--secondary);
+            color: var(--primary-dark);
+            padding: 12px 25px;
+            max-width: 750px;
+            margin: 0 auto 25px auto;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .hero .destaque-nacional i { margin-right: 10px; font-size: 20px; }
+        
+        .hero .atendimento-nacional { 
+            background: rgba(212, 168, 67, 0.15); 
+            border-left: 4px solid var(--secondary); 
+            padding: 12px 25px; 
+            max-width: 750px; 
+            margin: 0 auto 20px auto; 
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .hero .atendimento-nacional i { color: var(--secondary); margin-right: 10px; }
+        
+        .hero .cnh-brasil { 
+            background: rgba(212, 168, 67, 0.2); 
+            border-left: 4px solid var(--secondary); 
+            padding: 15px 25px; 
+            max-width: 750px; 
+            margin: 0 auto; 
+            border-radius: 12px;
+            font-size: 15px;
+            text-align: left;
+        }
+        .hero .cnh-brasil i { color: var(--secondary); margin-right: 10px; }
+        .hero .cnh-brasil strong { color: var(--secondary); }
+        
+        .btn-principal { background: var(--secondary); color: var(--primary-dark); padding: 12px 38px; border-radius: 40px; font-weight: bold; text-decoration: none; display: inline-block; transition: 0.2s; margin-top: 20px; }
+        .btn-principal:hover { background: var(--secondary-dark); transform: translateY(-3px); color: var(--white); }
+        
+        .section { padding: 70px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h3 { font-size: 32px; color: var(--primary); display: inline-block; padding-bottom: 12px; border-bottom: 3px solid var(--secondary); }
+        
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: var(--white); border-radius: 20px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
+        .card h4 { font-size: 22px; margin: 20px 20px 10px; color: var(--primary); }
+        .card p { padding: 0 20px 20px; color: var(--gray); font-size: 14px; }
+        .card .btn-card { display: inline-block; margin-bottom: 25px; background: var(--primary); color: var(--white); padding: 8px 28px; border-radius: 30px; text-decoration: none; transition: 0.2s; }
+        .card .btn-card:hover { background: var(--primary-dark); }
+        
+        .depoimentos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .depoimento-card { background: var(--white); border-radius: 20px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; position: relative; }
+        .depoimento-card:hover { transform: translateY(-5px); }
+        .depoimento-card i.fa-quote-left { color: var(--secondary); font-size: 30px; opacity: 0.3; position: absolute; top: 20px; left: 20px; }
+        .depoimento-texto { font-size: 15px; line-height: 1.6; color: var(--dark); margin: 15px 0 20px; font-style: italic; }
+        .depoimento-autor { font-weight: 700; color: var(--primary); margin-top: 15px; }
+        .depoimento-estrelas { color: var(--secondary); margin-bottom: 10px; }
+        .depoimento-estrelas i { margin-right: 3px; }
+        
+        .dif-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
+        .dif-item { background: var(--white); padding: 30px; border-radius: 20px; transition: 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .dif-item:hover { transform: translateY(-5px); }
+        .dif-item i { font-size: 48px; color: var(--secondary); margin-bottom: 15px; }
+        .dif-item h4 { color: var(--primary); margin-bottom: 10px; }
+        
+        .promo-card { background: linear-gradient(120deg, var(--primary), var(--primary-dark)); border-radius: 28px; padding: 50px; text-align: center; color: var(--white); margin: 40px 0; }
+        .promo-card h3 { font-size: 34px; }
+        .preco-destaque { font-size: 36px; font-weight: 800; margin: 20px 0; color: var(--secondary); }
+        
+        .contato-simples { text-align: center; padding: 50px 20px; background: var(--light); border-radius: 28px; margin: 40px 0; }
+        .contato-simples h3 { font-size: 32px; color: var(--primary); margin-bottom: 20px; }
+        .contato-simples p { color: var(--gray); margin-bottom: 30px; font-size: 16px; }
+        .btn-atendimento-grande { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px; 
+            background: #25D366; 
+            color: var(--white); 
+            padding: 16px 40px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 20px; 
+            transition: 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .btn-atendimento-grande i { font-size: 28px; }
+        .btn-atendimento-grande:hover { background: #128C7E; transform: scale(1.03); }
+        
+        .footer { background: var(--primary-dark); color: #ccc; padding: 50px 0 20px; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: var(--secondary); margin-bottom: 15px; }
+        .footer-col i { margin-right: 8px; color: var(--secondary); }
+        .social-icons a { display: inline-block; width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; text-align: center; line-height: 35px; color: var(--white); margin-right: 10px; transition: 0.2s; }
+        .social-icons a:hover { background: var(--secondary); transform: translateY(-3px); }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; font-size: 13px; }
+        
+        .whatsapp-float { 
+            position: fixed; 
+            bottom: 25px; 
+            right: 25px; 
+            background: #25D366; 
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 32px; 
+            color: var(--white); 
+            text-decoration: none; 
+            z-index: 999; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            transition: 0.2s;
+            animation: pulse 1.5s infinite;
+        }
+        .whatsapp-float:hover { 
+            transform: scale(1.1); 
+            background: #128C7E; 
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 28px; }
+            .atendimento-buttons { flex-direction: row; flex-wrap: wrap; justify-content: flex-end; }
+            .btn-atendimento { font-size: 11px; padding: 5px 12px; }
+            .hero .cnh-brasil { font-size: 13px; padding: 12px 18px; }
+            .hero .atendimento-nacional { font-size: 14px; }
+            .hero .destaque-nacional { font-size: 14px; padding: 10px 15px; }
+            .btn-atendimento-grande { font-size: 16px; padding: 12px 25px; }
+            .depoimentos-grid { grid-template-columns: 1fr; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 28px; bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar com endereço real -->
+<div class="top-bar">
+    <div class="container">
+        <div class="endereco">
+            <i class="fas fa-map-marker-alt"></i> Rua Altinópolis, 269 - Água Fria - São Paulo/SP | CEP: 02334-000
+        </div>
+        <div class="endereco">
+            <i class="fas fa-building"></i> CNPJ: 48.917.074/0001-13
+        </div>
+    </div>
+</div>
+
+<header class="header">
+    <div class="container">
+        <div class="logo-area">
+            <div class="logo-icon">NGP</div>
+            <div class="logo-text">
+                <h1>AUTO ESCOLA NOVA GRAND PRIX</h1>
+            </div>
+        </div>
+        <!-- Botões de atendimento - SEM E-MAIL -->
+        <div class="atendimento-buttons">
+            <a href="https://wa.me/5511949741220" class="btn-atendimento btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://wa.me/5511949741220" class="btn-atendimento btn-phone" target="_blank"><i class="fas fa-phone-alt"></i> Central de Atendimento</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="destaque-nacional">
+            <i class="fas fa-map-marked-alt"></i> 🇧🇷 FORNECEMOS CNH EM TODO O BRASIL 🇧🇷
+        </div>
+        
+        <div class="atendimento-nacional">
+            <i class="fas fa-check-circle"></i> DESDE 1977 NA ZONA NORTE DE SÃO PAULO - ATENDIMENTO NACIONAL
+        </div>
+        
+        <h2>CNH com qualidade e aprovação garantida em todo território nacional</h2>
+        <p>Há mais de 48 anos formando condutores. Frota moderna, instrutores qualificados e atendimento cordial. Atendemos alunos de todos os estados brasileiros.</p>
+        
+        <div class="cnh-brasil">
+            <i class="fas fa-check-circle"></i> <strong>Programa CNH Brasil</strong><br>
+            A Auto Escola Nova Grand Prix está totalmente alinhada ao <strong>Programa CNH Brasil</strong>, a nova política nacional de formação de condutores que moderniza e agiliza o processo de habilitação. O programa traz benefícios como: 
+            <strong>redução de burocracia</strong>, <strong>padronização do ensino</strong> em todo território nacional, <strong>aulas práticas mais eficientes</strong> e <strong>maior transparência</strong> em todas as etapas.
+        </div>
+        
+        <a href="https://wa.me/5511949741220" class="btn-principal" target="_blank">QUERO MINHA CNH</a>
+    </div>
+</section>
+
+<!-- HABILITAÇÃO -->
+<section id="habilitacao" class="section">
+    <div class="container">
+        <div class="section-title"><h3>Habilitação • CNH</h3></div>
+        <div class="cards-grid">
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&h=400&fit=crop" alt="Moto">
+                <h4>Categoria A (Moto)</h4>
+                <p>Aulas práticas com motos modernas, preparatório para o exame do Detran e suporte completo.</p>
+                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Saiba mais</a>
+            </div>
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&h=400&fit=crop" alt="Carro">
+                <h4>Categoria B (Carro)</h4>
+                <p>Carros com ar-condicionado e direção hidráulica. Aulas práticas com instrutores experientes.</p>
+                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Saiba mais</a>
+            </div>
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop" alt="Caminhão">
+                <h4>Categoria C (Caminhão)</h4>
+                <p>Habilitação para veículos de carga acima de 3.500kg. Curso completo e preparatório.</p>
+                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Saiba mais</a>
+            </div>
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop" alt="Ônibus">
+                <h4>Categoria D (Ônibus)</h4>
+                <p>Mudança de categoria para transporte de passageiros. Aulas práticas focadas na prova.</p>
+                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Saiba mais</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CURSOS -->
+<section id="cursos" class="section" style="background:#eef2f7;">
+    <div class="container">
+        <div class="section-title"><h3>Cursos especializados</h3></div>
+        <div class="cards-grid">
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop" alt="Estudando">
+                <h4>1ª Habilitação</h4>
+                <p>Processo completo: exames, aulas teóricas e práticas, suporte até a CNH.</p>
+                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Tenho interesse</a>
+            </div>
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=600&h=400&fit=crop" alt="Reciclagem">
+                <h4>Reciclagem de CNH</h4>
+                <p>Curso obrigatório para condutores que tiveram a CNH suspensa ou cassada.</p>
+                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Tenho interesse</a>
+            </div>
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" alt="Dirigindo">
+                <h4>Curso Medo de Dirigir</h4>
+                <p>Apoio prático e psicológico para superar o medo ao volante.</p>
+                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Tenho interesse</a>
+            </div>
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&h=400&fit=crop" alt="Adição">
+                <h4>Adição de Categoria</h4>
+                <p>Adicione A, B, C ou D de forma rápida e descomplicada.</p>
+                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Tenho interesse</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- QUEM SOMOS -->
+<section id="quem-somos" class="section">
+    <div class="container">
+        <div class="section-title"><h3>Auto Escola Nova Grand Prix</h3></div>
+        <div style="max-width: 900px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 40px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <p style="font-size: 17px; line-height: 1.7;">Desde <strong>1977</strong> a Nova Grand Prix é a autoescola preferida dos moradores da região norte de São Paulo. Em todos esses anos, formamos milhares de condutores e estivemos presentes em uma fase importante de suas vidas. <strong>Fornecemos CNH em todo o Brasil</strong>, com atendimento personalizado e suporte em todas as etapas do processo.</p>
+            <p style="font-size: 17px; line-height: 1.7; margin-top: 20px;">Localizada na <strong>Rua Altinópolis, 269 - Água Fria, São Paulo/SP</strong>, nossa estrutura conta com frota moderna de carros e motos, assim como profissionais altamente capacitados para oferecer um treinamento de qualidade e bom atendimento para alunos de todos os estados brasileiros.</p>
+        </div>
+    </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais" class="section" style="background:#eef2f7;">
+    <div class="container">
+        <div class="section-title"><h3>Por que escolher a Nova Grand Prix?</h3></div>
+        <div class="dif-grid">
+            <div class="dif-item"><i class="fas fa-trophy"></i><h4>+48 anos</h4><p>Desde 1977 na Zona Norte de SP</p></div>
+            <div class="dif-item"><i class="fas fa-car"></i><h4>Frota moderna</h4><p>Carros com ar e direção hidráulica</p></div>
+            <div class="dif-item"><i class="fas fa-chalkboard-user"></i><h4>Instrutores qualificados</h4><p>Metodologia personalizada</p></div>
+            <div class="dif-item"><i class="fas fa-headset"></i><h4>Atendimento cordial</h4><p>Equipe atenciosa e solícita</p></div>
+            <div class="dif-item"><i class="fas fa-clock"></i><h4>Horário flexível</h4><p>Segunda a sábado</p></div>
+            <div class="dif-item"><i class="fas fa-map-marked-alt"></i><h4>Atendimento Nacional</h4><p>CNH em todo o Brasil</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" class="section">
+    <div class="container">
+        <div class="section-title"><h3>O que nossos alunos dizem</h3></div>
+        <div class="depoimentos-grid">
+            <div class="depoimento-card">
+                <i class="fas fa-quote-left"></i>
+                <div class="depoimento-estrelas">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="depoimento-texto">
+                    "Instrutores experientes que oferecem apoio e encorajamento a cada aluno. Aulas práticas bem estruturadas que ajudam a superar medos e inseguranças."
+                </div>
+                <div class="depoimento-autor">— Aluno</div>
+            </div>
+            <div class="depoimento-card">
+                <i class="fas fa-quote-left"></i>
+                <div class="depoimento-estrelas">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="depoimento-texto">
+                    "Ambiente acolhedor que contribui para um aprendizado tranquilo. Ótima organização e agilidade em todo o processo de habilitação."
+                </div>
+                <div class="depoimento-autor">— Aluno</div>
+            </div>
+            <div class="depoimento-card">
+                <i class="fas fa-quote-left"></i>
+                <div class="depoimento-estrelas">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="depoimento-texto">
+                    "Rapidez e eficiência no processo de habilitação. Consegui tirar a carteira em poucos meses. Amplamente recomendado!"
+                </div>
+                <div class="depoimento-autor">— Aluno</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROMOÇÃO -->
+<section id="promocao">
+    <div class="container">
+        <div class="promo-card">
+            <h3>🏁 PROMOÇÃO NOVA GRAND PRIX 🏁</h3>
+            <p>Primeira CNH Categoria B com condições imperdíveis</p>
+            <div class="preco-destaque">Matrícula ZERO + desconto especial</div>
+            <p>Consulte nossas ofertas para adição de categoria e reciclagem.</p>
+            <a href="https://wa.me/5511949741220" class="btn-principal" style="background:var(--white); color:var(--primary);" target="_blank">Quero aprovação rápida</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="section">
+    <div class="container">
+        <div class="contato-simples">
+            <h3>📞 Fale com um especialista</h3>
+            <p>Tire suas dúvidas sobre CNH, valores, prazos e documentação. Nossa equipe está pronta para te atender em todo o Brasil!</p>
+            <a href="https://wa.me/5511949741220" class="btn-atendimento-grande" target="_blank">
+                <i class="fab fa-whatsapp"></i> Falar com especialista agora
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4><i class="fas fa-map-pin"></i> Auto Escola Nova Grand Prix</h4>
+                <p>Rua Altinópolis, 269 - Água Fria</p>
+                <p>São Paulo - SP | CEP: 02334-000</p>
+                <p><i class="fas fa-id-card"></i> CNPJ: 48.917.074/0001-13</p>
+            </div>
+            <div class="footer-col">
+                <h4><i class="fas fa-clock"></i> Horário de Funcionamento</h4>
+                <p>Segunda a Sexta: 8h às 18h</p>
+                <p>Sábado: 8h às 13h</p>
+                <p>Domingo: Fechado</p>
+            </div>
+            <div class="footer-col">
+                <h4><i class="fas fa-map-marked-alt"></i> Atendimento Nacional</h4>
+                <p><strong>Fornecemos CNH em todo o Brasil</strong></p>
+                <p>Atendemos alunos de todos os 26 estados + DF</p>
+                <p>Suporte online e orientação à distância</p>
+                <p>Processo habilitacional em qualquer região</p>
+                <div class="social-icons" style="margin-top: 15px;">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 AUTO ESCOLA NOVA GRAND PRIX | Desde 1977 formando condutores | Fornecemos CNH em todo o Brasil</p>
+        </div>
+    </div>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5511949741220" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>
