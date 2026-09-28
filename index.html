@@ -1,447 +1,314 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Escola Nova Grand Prix | CNH em Todo o Brasil</title>
-    <meta name="description" content="Auto Escola Nova Grand Prix - Desde 1977 formando condutores. Fornecemos CNH em todo o Brasil com qualidade e aprovação garantida.">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; background: #f0f4f8; color: #1a2a3a; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
-        
-        :root {
-            --primary: #1a3a5c;
-            --primary-dark: #0f2a44;
-            --secondary: #d4a843;
-            --secondary-dark: #b8922e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --white: #ffffff;
-            --dark: #2c3e50;
-        }
-        
-        .top-bar { background: var(--primary-dark); color: var(--white); padding: 8px 0; font-size: 13px; }
-        .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .top-bar .endereco i { color: var(--secondary); margin-right: 5px; }
-        
-        .header { background: var(--white); position: sticky; top: 0; z-index: 1000; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        
-        .logo-area { display: flex; align-items: center; gap: 15px; }
-        .logo-icon { width: 60px; height: 60px; background: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; color: var(--secondary); }
-        .logo-text h1 { font-size: 22px; color: var(--primary); margin: 0; }
-        
-        .atendimento-buttons { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
-        .btn-atendimento { padding: 8px 18px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
-        .btn-whatsapp { background: #25D366; color: var(--white); }
-        .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); }
-        .btn-phone { background: var(--primary); color: var(--white); }
-        .btn-phone:hover { background: var(--primary-dark); transform: scale(1.02); }
-        
-        .hero { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--white); text-align: center; padding: 80px 20px; }
-        .hero h2 { font-size: 44px; margin-bottom: 18px; }
-        .hero p { font-size: 18px; max-width: 700px; margin: 0 auto 28px; }
-        
-        .hero .destaque-nacional { 
-            background: var(--secondary);
-            color: var(--primary-dark);
-            padding: 12px 25px;
-            max-width: 750px;
-            margin: 0 auto 25px auto;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 800;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .hero .destaque-nacional i { margin-right: 10px; font-size: 20px; }
-        
-        .hero .atendimento-nacional { 
-            background: rgba(212, 168, 67, 0.15); 
-            border-left: 4px solid var(--secondary); 
-            padding: 12px 25px; 
-            max-width: 750px; 
-            margin: 0 auto 20px auto; 
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            text-align: center;
-        }
-        .hero .atendimento-nacional i { color: var(--secondary); margin-right: 10px; }
-        
-        .hero .cnh-brasil { 
-            background: rgba(212, 168, 67, 0.2); 
-            border-left: 4px solid var(--secondary); 
-            padding: 15px 25px; 
-            max-width: 750px; 
-            margin: 0 auto; 
-            border-radius: 12px;
-            font-size: 15px;
-            text-align: left;
-        }
-        .hero .cnh-brasil i { color: var(--secondary); margin-right: 10px; }
-        .hero .cnh-brasil strong { color: var(--secondary); }
-        
-        .btn-principal { background: var(--secondary); color: var(--primary-dark); padding: 12px 38px; border-radius: 40px; font-weight: bold; text-decoration: none; display: inline-block; transition: 0.2s; margin-top: 20px; }
-        .btn-principal:hover { background: var(--secondary-dark); transform: translateY(-3px); color: var(--white); }
-        
-        .section { padding: 70px 0; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h3 { font-size: 32px; color: var(--primary); display: inline-block; padding-bottom: 12px; border-bottom: 3px solid var(--secondary); }
-        
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: var(--white); border-radius: 20px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        .card-img { width: 100%; height: 200px; object-fit: cover; }
-        .card h4 { font-size: 22px; margin: 20px 20px 10px; color: var(--primary); }
-        .card p { padding: 0 20px 20px; color: var(--gray); font-size: 14px; }
-        .card .btn-card { display: inline-block; margin-bottom: 25px; background: var(--primary); color: var(--white); padding: 8px 28px; border-radius: 30px; text-decoration: none; transition: 0.2s; }
-        .card .btn-card:hover { background: var(--primary-dark); }
-        
-        .depoimentos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
-        .depoimento-card { background: var(--white); border-radius: 20px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; position: relative; }
-        .depoimento-card:hover { transform: translateY(-5px); }
-        .depoimento-card i.fa-quote-left { color: var(--secondary); font-size: 30px; opacity: 0.3; position: absolute; top: 20px; left: 20px; }
-        .depoimento-texto { font-size: 15px; line-height: 1.6; color: var(--dark); margin: 15px 0 20px; font-style: italic; }
-        .depoimento-autor { font-weight: 700; color: var(--primary); margin-top: 15px; }
-        .depoimento-estrelas { color: var(--secondary); margin-bottom: 10px; }
-        .depoimento-estrelas i { margin-right: 3px; }
-        
-        .dif-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
-        .dif-item { background: var(--white); padding: 30px; border-radius: 20px; transition: 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .dif-item:hover { transform: translateY(-5px); }
-        .dif-item i { font-size: 48px; color: var(--secondary); margin-bottom: 15px; }
-        .dif-item h4 { color: var(--primary); margin-bottom: 10px; }
-        
-        .promo-card { background: linear-gradient(120deg, var(--primary), var(--primary-dark)); border-radius: 28px; padding: 50px; text-align: center; color: var(--white); margin: 40px 0; }
-        .promo-card h3 { font-size: 34px; }
-        .preco-destaque { font-size: 36px; font-weight: 800; margin: 20px 0; color: var(--secondary); }
-        
-        .contato-simples { text-align: center; padding: 50px 20px; background: var(--light); border-radius: 28px; margin: 40px 0; }
-        .contato-simples h3 { font-size: 32px; color: var(--primary); margin-bottom: 20px; }
-        .contato-simples p { color: var(--gray); margin-bottom: 30px; font-size: 16px; }
-        .btn-atendimento-grande { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 15px; 
-            background: #25D366; 
-            color: var(--white); 
-            padding: 16px 40px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 20px; 
-            transition: 0.2s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .btn-atendimento-grande i { font-size: 28px; }
-        .btn-atendimento-grande:hover { background: #128C7E; transform: scale(1.03); }
-        
-        .footer { background: var(--primary-dark); color: #ccc; padding: 50px 0 20px; margin-top: 50px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-col h4 { color: var(--secondary); margin-bottom: 15px; }
-        .footer-col i { margin-right: 8px; color: var(--secondary); }
-        .social-icons a { display: inline-block; width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; text-align: center; line-height: 35px; color: var(--white); margin-right: 10px; transition: 0.2s; }
-        .social-icons a:hover { background: var(--secondary); transform: translateY(-3px); }
-        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; font-size: 13px; }
-        
-        .whatsapp-float { 
-            position: fixed; 
-            bottom: 25px; 
-            right: 25px; 
-            background: #25D366; 
-            width: 60px; 
-            height: 60px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 32px; 
-            color: var(--white); 
-            text-decoration: none; 
-            z-index: 999; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
-            transition: 0.2s;
-            animation: pulse 1.5s infinite;
-        }
-        .whatsapp-float:hover { 
-            transform: scale(1.1); 
-            background: #128C7E; 
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 28px; }
-            .atendimento-buttons { flex-direction: row; flex-wrap: wrap; justify-content: flex-end; }
-            .btn-atendimento { font-size: 11px; padding: 5px 12px; }
-            .hero .cnh-brasil { font-size: 13px; padding: 12px 18px; }
-            .hero .atendimento-nacional { font-size: 14px; }
-            .hero .destaque-nacional { font-size: 14px; padding: 10px 15px; }
-            .btn-atendimento-grande { font-size: 16px; padding: 12px 25px; }
-            .depoimentos-grid { grid-template-columns: 1fr; }
-            .whatsapp-float { width: 50px; height: 50px; font-size: 28px; bottom: 20px; right: 20px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sedona SCD — Sedona Sociedade de Crédito Direto S.A.</title>
+<meta name="description" content="Sedona Sociedade de Crédito Direto S.A. — crédito direto, simples e transparente. CNPJ: 57.173.208/0001-20">
+<style>
+  :root{
+    --navy:#0b1f33; --navy-2:#10314f; --teal:#14b8a6; --teal-dark:#0d9488;
+    --gold:#f4b740; --light:#f6f9fc; --gray:#5b6b7c; --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Segoe UI',Roboto,Arial,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;}
+  .container{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* NAVBAR */
+  header{position:sticky;top:0;z-index:100;background:rgba(11,31,51,.96);backdrop-filter:blur(8px);box-shadow:0 2px 12px rgba(0,0,0,.25);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:18px;}
+  .logo span{color:#fff;font-weight:700;font-size:1.15rem;letter-spacing:.5px;}
+  .logo small{color:var(--teal);font-size:.65rem;display:block;letter-spacing:2px;}
+  nav ul{display:flex;list-style:none;gap:28px;}
+  nav a{color:#dfe9f3;text-decoration:none;font-size:.92rem;transition:color .2s;}
+  nav a:hover{color:var(--teal);}
+  .nav-cta{background:var(--teal);color:#fff !important;padding:9px 20px;border-radius:8px;font-weight:600;}
+  .nav-cta:hover{background:var(--teal-dark);}
+  .hamb{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 55%,#0e3d3a 100%);color:#fff;padding:96px 0 88px;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.28),transparent 70%);}
+  .hero h1{font-size:2.9rem;line-height:1.15;max-width:640px;font-weight:800;}
+  .hero h1 em{color:var(--teal);font-style:normal;}
+  .hero p{margin:22px 0 34px;max-width:560px;color:#c8d6e4;font-size:1.1rem;}
+  .btn{display:inline-block;padding:14px 34px;border-radius:10px;text-decoration:none;font-weight:700;transition:transform .15s, box-shadow .15s;}
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 8px 24px rgba(20,184,166,.35);}
+  .btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);}
+  .btn-outline{border:2px solid rgba(255,255,255,.4);color:#fff;margin-left:12px;}
+  .btn-outline:hover{border-color:#fff;}
+  .badges{display:flex;gap:26px;margin-top:44px;flex-wrap:wrap;color:#9fb4c8;font-size:.85rem;}
+  .badges div::before{content:"✓";color:var(--teal);font-weight:800;margin-right:6px;}
+
+  /* SECTIONS */
+  section{padding:80px 0;}
+  .section-alt{background:var(--light);}
+  .eyebrow{color:var(--teal);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;font-size:.78rem;}
+  h2{font-size:2.1rem;margin:10px 0 16px;font-weight:800;}
+  .lead{color:var(--gray);max-width:680px;font-size:1.05rem;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;}
+  .stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .stat{background:#fff;border:1px solid #e3eaf2;border-radius:14px;padding:26px 22px;box-shadow:0 6px 18px rgba(11,31,51,.06);}
+  .stat b{display:block;font-size:1.7rem;color:var(--teal);}
+  .stat span{color:var(--gray);font-size:.88rem;}
+
+  /* SERVICES */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px;}
+  .card{background:#fff;border:1px solid #e3eaf2;border-radius:16px;padding:32px 26px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(11,31,51,.12);}
+  .card .icon{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px;}
+  .card h3{font-size:1.15rem;margin-bottom:10px;}
+  .card p{color:var(--gray);font-size:.92rem;}
+
+  /* LEGAL */
+  .legal{background:var(--light);}
+  .legal-wrap{max-width:840px;margin:0 auto;}
+  .legal h3{margin:34px 0 12px;font-size:1.2rem;}
+  .legal p,.legal li{color:#43566b;font-size:.95rem;}
+  .legal ul,.legal ol{padding-left:22px;margin-top:8px;}
+  .legal li{margin-bottom:6px;}
+  .updated{font-size:.8rem;color:#8a99aa;margin-bottom:6px;}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:#9fb4c8;padding:64px 0 30px;font-size:.88rem;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);}
+  footer h4{color:#fff;font-size:.95rem;margin-bottom:16px;}
+  footer a{color:#9fb4c8;text-decoration:none;display:block;margin-bottom:8px;}
+  footer a:hover{color:var(--teal);}
+  .footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .footer-bottom{padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.78rem;color:#7b8ea1;}
+
+  @media(max-width:900px){
+    .cards{grid-template-columns:1fr 1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    nav ul{display:none;}
+    .hamb{display:block;}
+  }
+  @media(max-width:600px){
+    .cards{grid-template-columns:1fr;}
+    .hero h1{font-size:2.1rem;}
+    .footer-grid{grid-template-columns:1fr;}
+    .btn-outline{margin-left:0;margin-top:12px;display:block;text-align:center;}
+    .btn-primary{display:block;text-align:center;}
+  }
+</style>
+<base target="_blank">
 </head>
 <body>
 
-<!-- Top bar com endereço real -->
-<div class="top-bar">
-    <div class="container">
-        <div class="endereco">
-            <i class="fas fa-map-marker-alt"></i> Rua Altinópolis, 269 - Água Fria - São Paulo/SP | CEP: 02334-000
-        </div>
-        <div class="endereco">
-            <i class="fas fa-building"></i> CNPJ: 48.917.074/0001-13
-        </div>
-    </div>
-</div>
-
-<header class="header">
-    <div class="container">
-        <div class="logo-area">
-            <div class="logo-icon">NGP</div>
-            <div class="logo-text">
-                <h1>AUTO ESCOLA NOVA GRAND PRIX</h1>
-            </div>
-        </div>
-        <!-- Botões de atendimento - SEM E-MAIL -->
-        <div class="atendimento-buttons">
-            <a href="https://wa.me/5511949741220" class="btn-atendimento btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="https://wa.me/5511949741220" class="btn-atendimento btn-phone" target="_blank"><i class="fas fa-phone-alt"></i> Central de Atendimento</a>
-        </div>
-    </div>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#inicio">
+      <div class="logo-mark">S</div>
+      <div><span>Sedona</span><small>SOCIEDADE DE CRÉDITO DIRETO</small></div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#privacidade">Privacidade</a></li>
+        <li><a href="#termos">Termos de Uso</a></li>
+        <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
+      </ul>
+    </nav>
+    <button class="hamb" onclick="document.querySelector('nav ul').style.display='flex'">☰</button>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="container">
-        <div class="destaque-nacional">
-            <i class="fas fa-map-marked-alt"></i> 🇧🇷 FORNECEMOS CNH EM TODO O BRASIL 🇧🇷
-        </div>
-        
-        <div class="atendimento-nacional">
-            <i class="fas fa-check-circle"></i> DESDE 1977 NA ZONA NORTE DE SÃO PAULO - ATENDIMENTO NACIONAL
-        </div>
-        
-        <h2>CNH com qualidade e aprovação garantida em todo território nacional</h2>
-        <p>Há mais de 48 anos formando condutores. Frota moderna, instrutores qualificados e atendimento cordial. Atendemos alunos de todos os estados brasileiros.</p>
-        
-        <div class="cnh-brasil">
-            <i class="fas fa-check-circle"></i> <strong>Programa CNH Brasil</strong><br>
-            A Auto Escola Nova Grand Prix está totalmente alinhada ao <strong>Programa CNH Brasil</strong>, a nova política nacional de formação de condutores que moderniza e agiliza o processo de habilitação. O programa traz benefícios como: 
-            <strong>redução de burocracia</strong>, <strong>padronização do ensino</strong> em todo território nacional, <strong>aulas práticas mais eficientes</strong> e <strong>maior transparência</strong> em todas as etapas.
-        </div>
-        
-        <a href="https://wa.me/5511949741220" class="btn-principal" target="_blank">QUERO MINHA CNH</a>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <h1>Crédito direto, <em>simples</em> e feito para você.</h1>
+    <p>A Sedona Sociedade de Crédito Direto S.A. conecta pessoas e negócios a soluções de crédito digitais, transparentes e sem burocracia — tudo 100% online.</p>
+    <a href="#servicos" class="btn btn-primary">Conheça nossos serviços</a>
+    <a href="#sobre" class="btn btn-outline">Sobre a Sedona</a>
+    <div class="badges">
+      <div>100% digital</div>
+      <div>Transparência total</div>
+      <div>Conformidade com a LGPD</div>
+      <div>Atendimento dedicado</div>
     </div>
+  </div>
 </section>
 
-<!-- HABILITAÇÃO -->
-<section id="habilitacao" class="section">
-    <div class="container">
-        <div class="section-title"><h3>Habilitação • CNH</h3></div>
-        <div class="cards-grid">
-            <div class="card">
-                <img class="card-img" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&h=400&fit=crop" alt="Moto">
-                <h4>Categoria A (Moto)</h4>
-                <p>Aulas práticas com motos modernas, preparatório para o exame do Detran e suporte completo.</p>
-                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Saiba mais</a>
-            </div>
-            <div class="card">
-                <img class="card-img" src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&h=400&fit=crop" alt="Carro">
-                <h4>Categoria B (Carro)</h4>
-                <p>Carros com ar-condicionado e direção hidráulica. Aulas práticas com instrutores experientes.</p>
-                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Saiba mais</a>
-            </div>
-            <div class="card">
-                <img class="card-img" src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop" alt="Caminhão">
-                <h4>Categoria C (Caminhão)</h4>
-                <p>Habilitação para veículos de carga acima de 3.500kg. Curso completo e preparatório.</p>
-                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Saiba mais</a>
-            </div>
-            <div class="card">
-                <img class="card-img" src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop" alt="Ônibus">
-                <h4>Categoria D (Ônibus)</h4>
-                <p>Mudança de categoria para transporte de passageiros. Aulas práticas focadas na prova.</p>
-                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Saiba mais</a>
-            </div>
-        </div>
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container about-grid">
+    <div>
+      <p class="eyebrow">Quem somos</p>
+      <h2>Tecnologia a serviço do crédito</h2>
+      <p class="lead">A <strong>Sedona Sociedade de Crédito Direto S.A.</strong> é uma instituição financeira que atua no modelo de sociedade de crédito direto (SCD), oferecendo operações de crédito de forma digital, ágil e transparente.</p>
+      <p class="lead" style="margin-top:14px;">Nosso propósito é democratizar o acesso ao crédito com responsabilidade, usando tecnologia para simplificar processos e colocar o cliente no centro de cada decisão.</p>
+      <p class="lead" style="margin-top:14px;">Operamos em conformidade com a legislação brasileira e as normas do Banco Central do Brasil, com compromisso total com a segurança dos dados e a privacidade dos nossos clientes.</p>
     </div>
+    <div class="stat-cards">
+      <div class="stat"><b>100%</b><span>Digital, do pedido ao contrato</span></div>
+      <div class="stat"><b>24/7</b><span>Plataforma disponível a qualquer hora</span></div>
+      <div class="stat"><b>LGPD</b><span>Proteção total dos seus dados</span></div>
+      <div class="stat"><b>BACEN</b><span>Conformidade regulatória</span></div>
+    </div>
+  </div>
 </section>
 
-<!-- CURSOS -->
-<section id="cursos" class="section" style="background:#eef2f7;">
-    <div class="container">
-        <div class="section-title"><h3>Cursos especializados</h3></div>
-        <div class="cards-grid">
-            <div class="card">
-                <img class="card-img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop" alt="Estudando">
-                <h4>1ª Habilitação</h4>
-                <p>Processo completo: exames, aulas teóricas e práticas, suporte até a CNH.</p>
-                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Tenho interesse</a>
-            </div>
-            <div class="card">
-                <img class="card-img" src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=600&h=400&fit=crop" alt="Reciclagem">
-                <h4>Reciclagem de CNH</h4>
-                <p>Curso obrigatório para condutores que tiveram a CNH suspensa ou cassada.</p>
-                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Tenho interesse</a>
-            </div>
-            <div class="card">
-                <img class="card-img" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" alt="Dirigindo">
-                <h4>Curso Medo de Dirigir</h4>
-                <p>Apoio prático e psicológico para superar o medo ao volante.</p>
-                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Tenho interesse</a>
-            </div>
-            <div class="card">
-                <img class="card-img" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&h=400&fit=crop" alt="Adição">
-                <h4>Adição de Categoria</h4>
-                <p>Adicione A, B, C ou D de forma rápida e descomplicada.</p>
-                <a href="https://wa.me/5511949741220" class="btn-card" target="_blank">Tenho interesse</a>
-            </div>
-        </div>
+<!-- SERVIÇOS -->
+<section class="section-alt" id="servicos">
+  <div class="container">
+    <p class="eyebrow">O que fazemos</p>
+    <h2>Nossos serviços</h2>
+    <p class="lead">Soluções de crédito pensadas para a sua realidade, com análise personalizada e condições claras.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">💳</div>
+        <h3>Crédito Pessoal</h3>
+        <p>Empréstimos pessoais com contratação 100% digital, análise rápida e parcelas que cabem no seu bolso.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏢</div>
+        <h3>Crédito para Empresas</h3>
+        <p>Capital de giro e financiamento para MEIs, micro e pequenas empresas impulsionarem seus negócios.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>Conta Digital</h3>
+        <p>Gestão financeira integrada: acompanhe contratos, pagamentos e saldos direto pelo celular.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔁</div>
+        <h3>Refinanciamento</h3>
+        <p>Renegocie suas dívidas com condições melhores e simplifique sua vida financeira.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Análise de Crédito Inteligente</h3>
+        <p>Tecnologia de ponta para avaliar perfis com agilidade e oferecer as melhores condições possíveis.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Atendimento Humanizado</h3>
+        <p>Equipe dedicada pronta para ajudar por chat, e-mail e telefone em horário comercial.</p>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- QUEM SOMOS -->
-<section id="quem-somos" class="section">
-    <div class="container">
-        <div class="section-title"><h3>Auto Escola Nova Grand Prix</h3></div>
-        <div style="max-width: 900px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 40px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <p style="font-size: 17px; line-height: 1.7;">Desde <strong>1977</strong> a Nova Grand Prix é a autoescola preferida dos moradores da região norte de São Paulo. Em todos esses anos, formamos milhares de condutores e estivemos presentes em uma fase importante de suas vidas. <strong>Fornecemos CNH em todo o Brasil</strong>, com atendimento personalizado e suporte em todas as etapas do processo.</p>
-            <p style="font-size: 17px; line-height: 1.7; margin-top: 20px;">Localizada na <strong>Rua Altinópolis, 269 - Água Fria, São Paulo/SP</strong>, nossa estrutura conta com frota moderna de carros e motos, assim como profissionais altamente capacitados para oferecer um treinamento de qualidade e bom atendimento para alunos de todos os estados brasileiros.</p>
-        </div>
-    </div>
+<!-- POLÍTICA DE PRIVACIDADE -->
+<section class="legal" id="privacidade">
+  <div class="container legal-wrap">
+    <p class="eyebrow">Documentos legais</p>
+    <h2>Política de Privacidade</h2>
+    <p class="updated">Última atualização: 28 de setembro de 2026</p>
+    <p>A Sedona Sociedade de Crédito Direto S.A. ("Sedona", "nós"), inscrita no CNPJ sob o nº 57.173.208/0001-20, valoriza a sua privacidade e trata os seus dados pessoais em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 – LGPD).</p>
+
+    <h3>1. Dados que coletamos</h3>
+    <ul>
+      <li><strong>Dados de identificação:</strong> nome, CPF, RG, data de nascimento, filiação;</li>
+      <li><strong>Dados de contato:</strong> e-mail, telefone e endereço;</li>
+      <li><strong>Dados financeiros e creditícios:</strong> renda, histórico de crédito, informações de contas e transações;</li>
+      <li><strong>Dados de navegação:</strong> endereço IP, dispositivo, cookies e logs de acesso.</li>
+    </ul>
+
+    <h3>2. Finalidades do tratamento</h3>
+    <p>Utilizamos os seus dados para: viabilizar a contratação de produtos e serviços; realizar análise de crédito; cumprir obrigações regulatórias e legais (incluindo Banco Central do Brasil, Receita Federal e órgãos de prevenção a fraudes); prevenir fraudes e crimes financeiros; e melhorar a experiência de uso das nossas plataformas.</p>
+
+    <h3>3. Compartilhamento de dados</h3>
+    <p>Os dados pessoais podem ser compartilhados com: parceiros estritamente necessários à prestação dos serviços; órgãos reguladores e autoridades públicas; e bureaus de crédito, exclusivamente para fins permitidos em lei, sempre mediante salvaguardas de segurança.</p>
+
+    <h3>4. Seus direitos</h3>
+    <p>Nos termos da LGPD, você pode solicitar, a qualquer momento: confirmação e acesso aos seus dados; correção de dados incompletos ou desatualizados; anonimização, bloqueio ou eliminação de dados tratados em desconformidade; portabilidade; informação sobre o compartilhamento; e revogação do consentimento.</p>
+    <p>Para exercer seus direitos, contate nosso Encarregado de Proteção de Dados (DPO): <strong>privacidade@sedona.com.br</strong>.</p>
+
+    <h3>5. Segurança e retenção</h3>
+    <p>Adotamos medidas técnicas e administrativas aptas à proteção dos dados pessoais, incluindo criptografia, controle de acesso e monitoramento contínuo. Os dados são mantidos pelo período necessário ao cumprimento das finalidades descritas e das obrigações legais e regulatórias.</p>
+
+    <h3>6. Alterações desta política</h3>
+    <p>Esta Política de Privacidade pode ser atualizada periodicamente. Recomendamos a leitura regular desta página. Em caso de alterações relevantes, comunicaremos os titulares pelos canais de contato cadastrados.</p>
+  </div>
 </section>
 
-<!-- DIFERENCIAIS -->
-<section id="diferenciais" class="section" style="background:#eef2f7;">
-    <div class="container">
-        <div class="section-title"><h3>Por que escolher a Nova Grand Prix?</h3></div>
-        <div class="dif-grid">
-            <div class="dif-item"><i class="fas fa-trophy"></i><h4>+48 anos</h4><p>Desde 1977 na Zona Norte de SP</p></div>
-            <div class="dif-item"><i class="fas fa-car"></i><h4>Frota moderna</h4><p>Carros com ar e direção hidráulica</p></div>
-            <div class="dif-item"><i class="fas fa-chalkboard-user"></i><h4>Instrutores qualificados</h4><p>Metodologia personalizada</p></div>
-            <div class="dif-item"><i class="fas fa-headset"></i><h4>Atendimento cordial</h4><p>Equipe atenciosa e solícita</p></div>
-            <div class="dif-item"><i class="fas fa-clock"></i><h4>Horário flexível</h4><p>Segunda a sábado</p></div>
-            <div class="dif-item"><i class="fas fa-map-marked-alt"></i><h4>Atendimento Nacional</h4><p>CNH em todo o Brasil</p></div>
-        </div>
-    </div>
+<!-- TERMOS DE USO -->
+<section id="termos">
+  <div class="container legal-wrap">
+    <h2>Termos de Uso</h2>
+    <p class="updated">Última atualização: 28 de setembro de 2026</p>
+    <p>Estes Termos de Uso regulamentam o acesso e a utilização dos sites, aplicativos e serviços oferecidos pela Sedona Sociedade de Crédito Direto S.A., CNPJ nº 57.173.208/0001-20.</p>
+
+    <h3>1. Aceitação</h3>
+    <p>Ao acessar ou utilizar nossos canais digitais, você declara ter lido, compreendido e aceitado estes Termos de Uso, bem como a nossa Política de Privacidade. Caso não concorde, recomendamos a interrupção imediata do uso.</p>
+
+    <h3>2. Dos serviços</h3>
+    <p>A Sedona oferece produtos e serviços de crédito sujeitos a análise e aprovação. A disponibilização de crédito, os valores, prazos e taxas serão sempre informados de forma clara antes da contratação, nos termos da legislação vigente. A simples contratação não garante aprovação futura.</p>
+
+    <h3>3. Do cadastro</h3>
+    <p>O usuário se compromete a fornecer informações verdadeiras, exatas e atualizadas, responsabilizando-se por qualquer prejuízo decorrente de dados incorretos. O acesso a determinadas funcionalidades pode exigir verificação de identidade.</p>
+
+    <h3>4. Da conta e da segurança</h3>
+    <p>Você é responsável pela guarda e confidencialidade de suas credenciais de acesso. Notifique-nos imediatamente em caso de uso não autorizado da sua conta. A Sedona não se responsabiliza por perdas decorrentes de negligência do usuário na proteção de suas senhas.</p>
+
+    <h3>5. Das obrigações do usuário</h3>
+    <ul>
+      <li>Utilizar os serviços apenas para fins lícitos;</li>
+      <li>Não praticar fraude, lavagem de dinheiro ou financiamento ao terrorismo;</li>
+      <li>Não tentar acessar, modificar ou danificar sistemas, dados ou serviços de terceiros;</li>
+      <li>Manter seus dados cadastrais sempre atualizados.</li>
+    </ul>
+
+    <h3>6. Da propriedade intelectual</h3>
+    <p>Todo o conteúdo dos nossos canais — marcas, logotipos, textos, layouts e softwares — é de titularidade da Sedona ou de seus licenciantes, sendo vedada a reprodução sem autorização prévia e por escrito.</p>
+
+    <h3>7. Da limitação de responsabilidade</h3>
+    <p>A Sedona não responde por indisponibilidades temporárias dos canais digitais decorrentes de falhas técnicas, manutenção ou caso fortuito e força maior, empenhando-se, contudo, em restabelecer os serviços com a máxima diligência possível.</p>
+
+    <h3>8. Do foro e da legislação aplicável</h3>
+    <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da comarca da sede da empresa para dirimir eventuais controvérsias, ressalvada a competência de outro foro por determinação legal.</p>
+  </div>
 </section>
 
-<!-- DEPOIMENTOS -->
-<section id="depoimentos" class="section">
-    <div class="container">
-        <div class="section-title"><h3>O que nossos alunos dizem</h3></div>
-        <div class="depoimentos-grid">
-            <div class="depoimento-card">
-                <i class="fas fa-quote-left"></i>
-                <div class="depoimento-estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <div class="depoimento-texto">
-                    "Instrutores experientes que oferecem apoio e encorajamento a cada aluno. Aulas práticas bem estruturadas que ajudam a superar medos e inseguranças."
-                </div>
-                <div class="depoimento-autor">— Aluno</div>
-            </div>
-            <div class="depoimento-card">
-                <i class="fas fa-quote-left"></i>
-                <div class="depoimento-estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <div class="depoimento-texto">
-                    "Ambiente acolhedor que contribui para um aprendizado tranquilo. Ótima organização e agilidade em todo o processo de habilitação."
-                </div>
-                <div class="depoimento-autor">— Aluno</div>
-            </div>
-            <div class="depoimento-card">
-                <i class="fas fa-quote-left"></i>
-                <div class="depoimento-estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <div class="depoimento-texto">
-                    "Rapidez e eficiência no processo de habilitação. Consegui tirar a carteira em poucos meses. Amplamente recomendado!"
-                </div>
-                <div class="depoimento-autor">— Aluno</div>
-            </div>
+<!-- CONTATO / RODAPÉ -->
+<footer id="contato">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <div class="logo-mark">S</div>
+          <div><span style="color:#fff;font-weight:700;">Sedona</span><small style="color:var(--teal);display:block;letter-spacing:2px;">SOCIEDADE DE CRÉDITO DIRETO</small></div>
         </div>
+        <p>Soluções de crédito digitais, transparentes e seguras para pessoas e empresas em todo o Brasil.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#privacidade">Política de Privacidade</a>
+        <a href="#termos">Termos de Uso</a>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <a href="mailto:contato@sedona.com.br">contato@sedona.com.br</a>
+        <a href="mailto:privacidade@sedona.com.br">privacidade@sedona.com.br</a>
+        <a href="tel:+5500000000000">(00) 0000-0000</a>
+        <a href="#">Seg. a sex., 9h às 18h</a>
+      </div>
+      <div>
+        <h4>Informações da empresa</h4>
+        <p><strong style="color:#fff;">Sedona Sociedade de Crédito Direto S.A.</strong><br>
+        CNPJ: 57.173.208/0001-20<br>
+        Instituição financeira regulada pelo Banco Central do Brasil.<br>
+        Endereço: [endereço completo da sede]<br>
+        SAC: [número do SAC] | Ouvidoria: [número da ouvidoria]</p>
+      </div>
     </div>
-</section>
-
-<!-- PROMOÇÃO -->
-<section id="promocao">
-    <div class="container">
-        <div class="promo-card">
-            <h3>🏁 PROMOÇÃO NOVA GRAND PRIX 🏁</h3>
-            <p>Primeira CNH Categoria B com condições imperdíveis</p>
-            <div class="preco-destaque">Matrícula ZERO + desconto especial</div>
-            <p>Consulte nossas ofertas para adição de categoria e reciclagem.</p>
-            <a href="https://wa.me/5511949741220" class="btn-principal" style="background:var(--white); color:var(--primary);" target="_blank">Quero aprovação rápida</a>
-        </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sedona Sociedade de Crédito Direto S.A. — Todos os direitos reservados.</span>
+      <span>CNPJ: 57.173.208/0001-20</span>
     </div>
-</section>
-
-<!-- CONTATO -->
-<section id="contato" class="section">
-    <div class="container">
-        <div class="contato-simples">
-            <h3>📞 Fale com um especialista</h3>
-            <p>Tire suas dúvidas sobre CNH, valores, prazos e documentação. Nossa equipe está pronta para te atender em todo o Brasil!</p>
-            <a href="https://wa.me/5511949741220" class="btn-atendimento-grande" target="_blank">
-                <i class="fab fa-whatsapp"></i> Falar com especialista agora
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- RODAPÉ -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4><i class="fas fa-map-pin"></i> Auto Escola Nova Grand Prix</h4>
-                <p>Rua Altinópolis, 269 - Água Fria</p>
-                <p>São Paulo - SP | CEP: 02334-000</p>
-                <p><i class="fas fa-id-card"></i> CNPJ: 48.917.074/0001-13</p>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fas fa-clock"></i> Horário de Funcionamento</h4>
-                <p>Segunda a Sexta: 8h às 18h</p>
-                <p>Sábado: 8h às 13h</p>
-                <p>Domingo: Fechado</p>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fas fa-map-marked-alt"></i> Atendimento Nacional</h4>
-                <p><strong>Fornecemos CNH em todo o Brasil</strong></p>
-                <p>Atendemos alunos de todos os 26 estados + DF</p>
-                <p>Suporte online e orientação à distância</p>
-                <p>Processo habilitacional em qualquer região</p>
-                <div class="social-icons" style="margin-top: 15px;">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2026 AUTO ESCOLA NOVA GRAND PRIX | Desde 1977 formando condutores | Fornecemos CNH em todo o Brasil</p>
-        </div>
-    </div>
+  </div>
 </footer>
-
-<!-- WHATSAPP FLUTUANTE -->
-<a href="https://wa.me/5511949741220" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
 
 </body>
 </html>
